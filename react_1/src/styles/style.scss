@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+//a font-family-t ide kell beimportálni!!!
+@import "mixins.scss";
+@import "init.scss";
+@import "variables.scss";
+@import "settings.scss";
+@import "grid.scss";
+@import "flex.scss";
+@import "inputs.scss";
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Nunito", sans-serif;
+    margin: 10px 0;
+}
+
+h1 {
+    color: map-get($colors, "primary");
+}
+
+h2 {
+    color: map-get($colors, "primary-lighter");
+}
+
+h3 {
+    color: map-get($colors, "secondary-darker");
+}
+
+h4 {
+    color: map-get($colors, "secondary");
+}
+
+h5 {
+    color: map-get($colors, "dark-grey");
+}
+
+h6 {
+    color: map-get($colors, "mid-grey");
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.transparent {
+    background-color: #5d5f71e3;
+}
+
+.shadow {
+    box-shadow: 0px 0px 4px map-get($colors, "dark-grey");
+}
+
+//portfolio-project
+
+nav {
+    height: 80px;
+    background-color: map-get($colors, "primary");
+    position: sticky;
+    top:0;
+    transition: all .5s ease;
+    z-index: 1000;
+
+    ul {
+        display: flex;
+        justify-content: center;
+
+        @media screen and (max-width: map-get($sizes, "sm")) {
+            display: block;
+        }
+    }
+
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        &:hover {
+            background-color: map-get($colors, "secondary");
+        }
+
+        @media screen and (max-width: map-get($sizes, "sm")) {
+            height: 40px;
+        }
+    }
+
+    a {
+        color: white!important;
+        text-decoration: none;
+        padding: 15px;
+
+        @media screen and (max-width: map-get($sizes, "sm")) {
+            height: auto;
+            position: fixed;
+            width: 100%;
+        }
+    }
+}
+
+.burger-menu {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    z-index: 1002;
+    font-size: 40px;
+    color: map-get($colors, "secondary-darker");
+    display: none;
+    cursor: pointer;
+    top: 0;
+    left: 5px;
+    margin-top: -8px;
+
+    @media screen and (max-width: map-get($sizes, "sm")) {
+        display: block;
+    }
+}
+
+header {
+    height: 350px;
+    // background-image: url("../images/header.jpg");
+    background-size: 100%;
+    background-position: center;
+
+    @media screen and (max-width: map-get($sizes, "md")) {
+        height: 250px;
+    }
+
+    @media screen and (max-width: map-get($sizes, "sm")) {
+        height: 200px;
+    }
+}
+
+.selected-menu {
+    background-color: map-get($colors, "secondary")
+}
+
+.loading-component {
+    position: relative;
+    text-align: center;
+}
+
+.loading-holder {
+    position: relative;
+    background-color: map-get($colors, "light-grey");
+    height: 10px;
+}
+
+.loading-line {
+    position: absolute;
+    background-color: map-get($colors, "secondary");
+    height: 10px;
+    top:0;
+    bottom:0;
+    left:0;
+}
+
+.modal-img {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-img-holder {
+    position: relative;
+    width: 80px;
+}
+
+.modal-img-holder img {
+    width: 100%;
+}
+
+.modal-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    color: map-get($colors, "danger");
+    cursor: pointer;
+}
+
+a:link {
+    color: map-get($colors, "secondary");
+}
+
+a:visited {
+    color: map-get($colors, "secondary-darker");
+}
+
+.hiding {
+    width: 50%;
+    height: 100%;
+    right:0;
+    top:0;
+    position: absolute;
+    background-color: black;
+}
+
+.nunito-font {
+    font-family: "Nunito", sans-serif;
+}
+
+.fa-icon-holder {
+    height: 30px;
+    overflow: hidden;
+}
+
+.fa-icon-holder .upper-icon,
+.fa-icon-holder .lower-icon {
+    transition: margin-top 0.5s ease;
+}
+
+.fa-icon-holder:hover .upper-icon {
+    margin-top: -40px;
+}
+
+.fa-icon-holder:not(:hover) .upper-icon {
+    margin-top: 0;
+}
+
+//fontos!!!!! 
+
+.img-gallery {
+    max-width: map-get($sizes, "sm");
+    height: 360px;
+    margin: 15px auto;
+    border: 2px solid map-get($colors, "secondary");
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+%icon {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    position: absolute;
+    top:0;
+    bottom:0;
+    margin: auto;
+    color: map-get($colors, "secondary-lighter");
+    user-select: none;
+    cursor: pointer;
+}
+
+img {
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.left-icon {
+    @extend %icon;
+    left: 10px;
+}
+
+.right-icon {
+    @extend %icon;
+    right: 10px;
+}
+
+@keyframes setToCurrentForward {
+    from {left: -100%;}
+    to {left: 0px;}
+}
+
+@keyframes setToPreviousForward {
+    from {left: 0px;}
+    to {left: 100%;}
+}
+
+@keyframes setToCurrentBackward {
+    from {left: 100%;}
+    to {left: 0px;}
+}
+
+@keyframes setToPreviousBackward {
+    from {left: 0px;}
+    to {left: -100%;}
+}
+
+.current-image-forward {
+    animation-name: setToCurrentForward;
+    animation-duration: 0.9s;
+    left:0;
+}
+
+.prev-image-forward {
+    animation-name: setToPreviousForward;
+    animation-duration: 0.9s;
+    left:100%;
+}
+
+.current-image-backward {
+    animation-name: setToCurrentBackward;
+    animation-duration: 0.9s;
+    left:0;
+}
+
+.prev-image-backward {
+    animation-name: setToPreviousBackward;
+    animation-duration: 0.9s;
+    left:-100%;
+}
+
+.img-counter {
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    left:0;
+    right:0;
+    margin: auto;
+    bottom: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.point {
+    background-color: rgba(72, 72, 72, 0.7);
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.title-holder {
+    background-color: rgba(0, 0, 0, 0.649);
+    color: white;
+    width: 100%;
+    top:0;
+    left:0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.hide-show-title {
+    position: absolute;
+    top: 32px;
+    background-color: rgba(0, 0, 0, 0.649);
+    color: white;
+    left:0;
+    right:0;
+    margin: auto;
+    width: 25px;
+    cursor: pointer;
+    z-index: 1;
+    text-align: center;
+    transition: all 0.4s ease;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 10px;
+}

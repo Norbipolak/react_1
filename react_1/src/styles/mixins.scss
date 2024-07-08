@@ -1,0 +1,33 @@
+@mixin mapMixin($clsName, $prop, $map) {
+    @each $key, $value in $map {
+        .#{$clsName}-#{$key} {
+            #{$prop}:$value!important;
+        }
+    }
+}
+
+@mixin listMixin($list, $clsName, $prop) {
+    @each $value in $list {
+        .#{$clsName}-#{$value} {
+            #{$prop}:$value!important;
+        }
+    }
+}
+
+@mixin loopMixin($from, $to, $clsName, $unit, $prop, $step) {
+    @while $from <= $to {
+        .#{$clsName}-#{$from} {
+            #{$prop}:#{$from}#{$unit}!important;
+        }
+
+        $from:$from+$step;
+    }
+}
+
+@mixin hoverMixin($clsName, $prop, $type:hover) { //hover bele van égetve, de meg lehet adni type-ot ha mást szeretnénk 
+    @each $key, $value in $colors {
+        .#{$clsName}-#{$type}-#{$key}:#{$type} {
+            #{$prop}:$value!important;
+        }
+    }
+}

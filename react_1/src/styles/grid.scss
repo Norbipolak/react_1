@@ -1,0 +1,63 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+//itt megcsináljuk mindegyikre a i-vel, hogy milyen grid legyen a calc-val 
+
+@for $i from 1 through 12 {
+    .col-lg-#{$i} {
+        width: calc(100%/12*#{$i})!important;
+    }
+
+    .col-md-#{$i} {
+        width: calc(100%/12*#{$i});
+    }
+
+    .col-sm-#{$i} {
+        width: calc(100%/12*#{$i})
+    }
+
+    .col-xs-#{$i} {
+        width: calc(100%/12*#{$i})
+    }
+}
+
+//itt meg media screen-vel az összes bemegy majd attól függően, hogy mit adunk meg neki media-ban max-width-nek
+
+@media screen and (max-width: map-get($sizes, "lg")) {
+    @for $i from 1 through 12 {
+        .col-lg-#{$i} {
+            width: 100%!important;
+        }
+
+        .col-md-#{$i} {
+            width: calc(100%/12*#{$i})!important;
+        }
+    }
+}
+
+@media screen and (max-width: map-get($sizes, "md")) {
+    @for $i from 1 through 12 {
+        .col-md-#{$i} {
+            width: 100%!important;
+        }
+
+        .col-sm-#{$i} {
+            width: calc(100%/12*#{$i})!important;
+        }
+    }
+}
+
+@media screen and (max-width: map-get($sizes, "sm")) {
+    @for $i from 1 through 12 {
+        .col-sm-#{$i} {
+            width: 100%!important;
+        }
+
+        .col-xs-#{$i} {
+            width: calc(100%/12*#{$i})!important;
+        }
+    }
+}
+
